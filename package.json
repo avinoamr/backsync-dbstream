@@ -1,0 +1,23 @@
+{
+  "name": "backsync-dbstream",
+  "version": "0.0.1",
+  "description": "Backbone sync method for dbstream-compatible connections",
+  "main": "index.js",
+  "dependencies": {
+    "backsync": "^0.1.13"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/avinoamr/backsync-dbstream.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/avinoamr/backsync-dbstream/issues"
+  },
+  "homepage": "https://github.com/avinoamr/backsync-dbstream"
+}
