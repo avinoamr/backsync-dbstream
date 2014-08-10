@@ -41,13 +41,13 @@ module.exports = function ( connection ) {
         .patch( function ( model, options, callback ) {
             read( model, { silent: true }, function ( err, obj ) {
                 if ( err ) return callback( err );
-                obj = _.extend( {}, obj, options.attrs );
+                obj = extend( {}, obj, options.attrs );
                 update( obj, {}, callback );
             });
         })
         .search( function ( collection, options, callback ) {
             options.data || ( options.data = {} );
-            var data = _.clone( options.data || {} );
+            var data = extend( {}, options.data || {} );
             delete data[ "$sort" ];
             delete data[ "$skip" ];
             delete data[ "$limit" ];
@@ -63,6 +63,17 @@ module.exports = function ( connection ) {
                 .on( "data", function ( obj ) { results.push( obj ) } )
         })
         .delete( function ( model, options, callback ) {
-            update( model, _.extend({ remove: true }, options ), callback );
+            update( model, extend({ remove: true }, options ), callback );
         });
+}
+
+function extend ( obj ) {
+    [].slice.call(arguments, 1).forEach(function(source) {
+      if (source) {
+        for (var prop in source) {
+          obj[prop] = source[prop];
+        }
+      }
+    });
+    return obj;
 }
